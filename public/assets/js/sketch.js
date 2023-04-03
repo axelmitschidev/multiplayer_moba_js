@@ -66,6 +66,7 @@ socket.on('users positions', users => {
         li.textContent = `${u.name} (x: ${u.pos.x.toFixed(1)}, y: ${u.pos.y.toFixed(1)})`
         document.querySelector('ul').appendChild(li)
     })
+    document.getElementById('npop').textContent = server_users.length
 })
 
 socket.on('texts positions', texts => {
