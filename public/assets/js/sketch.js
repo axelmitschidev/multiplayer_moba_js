@@ -13,7 +13,9 @@ function setup() {
     client_user = new User(0, 0)
     client_user.id = socket.id
     client_user.name = prompt('Choisie ton nom (pas plus de 30 caractères stp) :')
+    client_user.color = prompt('Choisie une couleur (format RGB (0 à 255) séparer par des virgule. Exemple : "200, 150, 100") :')
     if (!client_user.name) client_user.name = "?"
+    if (!client_user.color) client_user.color = "255, 255, 255"
 }
 
 function draw() {

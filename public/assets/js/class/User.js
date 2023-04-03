@@ -8,6 +8,7 @@ class User {
         this.maxForce = 10
         this.target = createVector(0, 0)
         this.id = id
+        this.color = "255, 255, 255"
         this.thingsView = []
         this.name = 'no'
     }
@@ -42,8 +43,17 @@ class User {
         }
         translate(this.pos.x, this.pos.y)
         rotate(this.vel.heading())
+        const arr_color = this.color.replace(' ', '').split(',')
+        const r = parseInt(arr_color[0]) > 255 ? 255 : parseInt(arr_color[0]) < 0 ? 0 : parseInt(arr_color[0])
+        const g = parseInt(arr_color[1]) > 255 ? 255 : parseInt(arr_color[1]) < 0 ? 0 : parseInt(arr_color[1])
+        const b = parseInt(arr_color[2]) > 255 ? 255 : parseInt(arr_color[2]) < 0 ? 0 : parseInt(arr_color[2])
+        fill(r, g, b)
+        if (r + g + b < 255 * 3 / 2) {
+            stroke(255)
+        } else {
+            stroke(0)
+        }
         circle(0, 0, this.size)
-        stroke(0)
         line(0, 0, 0 + this.size / 2, 0)
         pop()
     }
