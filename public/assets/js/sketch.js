@@ -16,9 +16,11 @@ function setup() {
 }
 
 function draw() {
+    textFont('monospace')
     client_user.update()
     socket.emit('user', client_user)
 
+    
     background(32)
     translate(-(client_user.pos.x - 400), -(client_user.pos.y - 400))
     server_texts.forEach(t => {
@@ -34,7 +36,7 @@ function draw() {
             u.draw()
         }
     })
-    client_user.draw()
+    client_user.draw(true)
 }
 
 function mouseClicked() {
@@ -65,7 +67,7 @@ socket.on('texts positions', texts => {
 
 function keyPressed() {
     
-    if (keyCode === 32) {
+    if (keyCode === 32 && sqrt((mouseX - 400) ** 2 + (mouseY - 400) ** 2) < 400) {
         socket.emit('add text', {
             text: document.getElementById('text').value,
             x: client_user.pos.x,

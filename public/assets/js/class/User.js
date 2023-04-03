@@ -29,13 +29,17 @@ class User {
             
             this.pos.add(this.vel)   
         }
-        
+
         this.acc.set(0, 0)
     }
 
-    draw = () => {
+    draw = (isMe) => {
         push()
         text(this.name, this.pos.x, this.pos.y - 20)
+        if (isMe) {
+            text('X : ' + this.pos.x.toFixed(1), this.pos.x - 250, this.pos.y - 250)
+            text('Y : ' + this.pos.y.toFixed(1), this.pos.x - 250, this.pos.y - 230)
+        }
         translate(this.pos.x, this.pos.y)
         rotate(this.vel.heading())
         circle(0, 0, this.size)
