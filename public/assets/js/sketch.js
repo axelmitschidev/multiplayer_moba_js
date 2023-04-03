@@ -27,6 +27,15 @@ function setup() {
 function draw() {
     textFont('monospace')
     client_user.update()
+
+    if (document.body.style.overflow === "hidden") {
+        document.body.style.overflow ="visible"
+    }
+
+    if (mouseIsPressed === true && sqrt((mouseX - offSet) ** 2 + (mouseY - offSet) ** 2) < offSet) {
+        client_user.setTarget(client_user.pos.x + (mouseX - offSet), client_user.pos.y + (mouseY - offSet))
+        document.body.style.overflow = "hidden"
+    }
     socket.emit('user', client_user)
 
     
@@ -46,12 +55,6 @@ function draw() {
         }
     })
     client_user.draw(true)
-}
-
-function mouseClicked() {
-    if (sqrt((mouseX - offSet) ** 2 + (mouseY - offSet) ** 2) < offSet) {
-        client_user.setTarget(client_user.pos.x + (mouseX - offSet), client_user.pos.y + (mouseY - offSet))
-    }
 }
 
 socket.on("connect", () => {
