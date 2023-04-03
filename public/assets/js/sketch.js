@@ -12,7 +12,8 @@ function setup() {
 
     client_user = new User(0, 0)
     client_user.id = socket.id
-    client_user.name = prompt('Choice your name :')
+    client_user.name = prompt('Choisie ton nom (pas plus de 30 caractères stp) :')
+    if (!client_user.name) client_user.name = "?"
 }
 
 function draw() {
@@ -59,6 +60,12 @@ socket.on('users positions', users => {
     })
 
     server_users = users
+    document.querySelector('ul').innerHTML = ""
+    server_users.forEach(u => {
+        const li = document.createElement('li')
+        li.textContent = `${u.name} (x: ${u.pos.x.toFixed(1)}, y: ${u.pos.y.toFixed(1)})`
+        document.querySelector('ul').appendChild(li)
+    })
 })
 
 socket.on('texts positions', texts => {
@@ -66,7 +73,6 @@ socket.on('texts positions', texts => {
 })
 
 function keyPressed() {
-    
     if (keyCode === 32 && sqrt((mouseX - 400) ** 2 + (mouseY - 400) ** 2) < 400) {
         socket.emit('add text', {
             text: document.getElementById('text').value,

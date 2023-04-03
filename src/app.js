@@ -7,7 +7,13 @@ const { Server } = require('socket.io')
 const io = new Server(server)
 
 const users = []
-const texts = []
+const texts = [
+    {
+        text: "Bienvenue sur un petit jeu en ligne\npermettant à tout le monde de poster des messages \nsur une grandes map et de se voir en direct.\n\nVous pouvez écrire le message a droite avec la zone\nde texte. Il faudra appuyer sur la barre \nd'espace pour poster le message sur la map.\n\nEviter de poster par dessus ce message pour que \ntout le monde puissent le lire correctement.\n\n                                    Axel M.",
+        x: 0,
+        y: -160
+    }
+]
 
 app.use('/assets', express.static(path.join(__dirname, '../public/assets/')))
 
@@ -17,9 +23,13 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     socket.emit('texts positions', texts)
+    socket.emit('users positions', users)
+    socket.broadcast.emit('users positions', users)
 
     socket.on('user', user => {
         user.id = socket.id
+        
+        if (user.name.length > 30) user.name = user.name.substring(0, 30)
 
         let index = users.findIndex(u => u.id === user.id)
 
@@ -30,6 +40,7 @@ io.on('connection', (socket) => {
         }
 
         socket.broadcast.emit('users positions', users)
+        socket.emit('users positions', users)
     })
     
     socket.on('add text', text => {

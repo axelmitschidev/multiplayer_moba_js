@@ -3,9 +3,32 @@ body {
     align-items: center;
     justify-content: space-evenly;
     min-height: 100vh;
+    font-family: monospace;
     margin: 0;
+    background-color: #333;
+    color: white;
 }
 
 canvas {
     border-radius: 50%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    height: 200px;
+    width: 400px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+textarea {
+    width: 400px;
+    height: 300px;
+    resize: none;
+    background-color: #222;
+    border: #000;
+    color: white;
+    padding: 1rem;
+    outline: none;
 }
