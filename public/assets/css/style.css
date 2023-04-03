@@ -45,15 +45,41 @@ button {
 }
 
 @media screen and (max-width: 900px) {
+    html {
+        width: 100%;
+    }
+
     body {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    body div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     textarea {
         margin-top: 1rem;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 1rem;
     }
 
     ul {
         margin-top: 1rem;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    canvas {
+        width: 500px;
+    }
+
+    button {
+        margin-left: 0;
     }
 }
