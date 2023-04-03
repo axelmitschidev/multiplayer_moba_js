@@ -31,4 +31,29 @@ textarea {
     color: white;
     padding: 1rem;
     outline: none;
+    margin-left: 1rem;
+}
+
+button {
+    color: white;
+    font-family: monospace;
+    border: none;
+    background-color: #222;
+    border-radius: 0;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        flex-direction: column;
+    }
+
+    textarea {
+        margin-top: 1rem;
+    }
+
+    ul {
+        margin-top: 1rem;
+    }
 }
