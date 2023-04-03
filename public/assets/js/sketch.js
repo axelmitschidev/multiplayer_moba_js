@@ -15,6 +15,7 @@ function setup() {
         offSet = screen.width/2
     }
     textAlign(CENTER)
+    fullscreen()
 
     client_user = new User(0, 0)
     client_user.id = socket.id
