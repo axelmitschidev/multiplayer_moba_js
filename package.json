@@ -1,0 +1,16 @@
+{
+  "name": "multiplayer_moba_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.js"
+  },
+  "author": "axelmitschidev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.6.1"
+  }
+}
