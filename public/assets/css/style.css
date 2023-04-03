@@ -73,6 +73,7 @@ button {
     textarea {
         margin-top: 1rem;
         width: 100%;
+        height: 100px;
         margin-left: 0;
         margin-bottom: 1rem;
     }
